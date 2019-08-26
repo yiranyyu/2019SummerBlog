@@ -1,24 +1,14 @@
 package com.shimh.oauth;
 
-import java.io.Serializable;
+import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 
-import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
-import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
-import org.apache.shiro.web.util.WebUtils;
 
-import com.shimh.common.util.StringUtils;
-
-/**
- * 从请求头获取token
- *
- * @author shimh
- * <p>
- * 2018年1月23日
- */
 public class OAuthSessionManager extends DefaultWebSessionManager {
 
     public static final String OAUTH_TOKEN = "Oauth-Token";

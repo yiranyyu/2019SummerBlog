@@ -1,24 +1,16 @@
 package com.shimh.entity;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.*;
-
+import com.alibaba.fastjson.annotation.JSONField;
+import com.shimh.common.entity.BaseEntity;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.shimh.common.entity.BaseEntity;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
-/**
- * 评论
- *
- * @author shimh
- * <p>
- * 2018年1月30日
- */
+
 @Entity
 @Table(name = "me_comment")
 public class Comment extends BaseEntity<Integer> {
@@ -35,7 +27,7 @@ public class Comment extends BaseEntity<Integer> {
     /**
      * 类型 0 文章的评论 1 评论的评论 2 评论的回复 @
      */
-    @Column(name = "level",length = 1)
+    @Column(name = "level", length = 1)
     private String level;
 
     /**
@@ -52,12 +44,12 @@ public class Comment extends BaseEntity<Integer> {
     private Article article;
 
     @OneToMany
-    @JoinColumn(name = "parent_id",nullable = true)
+    @JoinColumn(name = "parent_id", nullable = true)
     private List<Comment> childrens;
 
     @ManyToOne
     @JoinColumn(name = "parent_id")
-    @NotFound(action= NotFoundAction.IGNORE)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Comment parent;
 
 

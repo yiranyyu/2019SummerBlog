@@ -1,25 +1,16 @@
 package com.shimh.repository.impl;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
+import com.shimh.repository.wrapper.TagWrapper;
+import com.shimh.vo.TagVO;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.transform.Transformers;
 import org.hibernate.type.IntegerType;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.shimh.repository.wrapper.CategoryWrapper;
-import com.shimh.repository.wrapper.TagWrapper;
-import com.shimh.vo.TagVO;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
 
-/**
- * @author shimh
- * <p>
- * 2018年1月25日
- */
 public class TagRepositoryImpl implements TagWrapper {
 
     @PersistenceContext

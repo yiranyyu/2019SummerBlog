@@ -1,35 +1,14 @@
 package com.shimh.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.shimh.common.entity.BaseEntity;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.alibaba.fastjson.annotation.JSONField;
-import com.shimh.common.entity.BaseEntity;
-
-/**
- * 文章
- *
- * @author shimh
- * <p>
- * 2018年1月23日
- */
 @Entity
 @Table(name = "me_article")
 public class Article extends BaseEntity<Integer> {

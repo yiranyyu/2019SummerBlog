@@ -1,20 +1,12 @@
 package com.shimh.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
+import com.shimh.common.entity.BaseEntity;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.shimh.common.entity.BaseEntity;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-/**
- * 文章分类
- *
- * @author shimh
- * <p>
- * 2018年1月23日
- */
+
 @Entity
 @Table(name = "me_category")
 public class Category extends BaseEntity<Integer> {

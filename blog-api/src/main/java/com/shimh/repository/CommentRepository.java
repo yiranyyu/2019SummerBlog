@@ -1,17 +1,12 @@
 package com.shimh.repository;
 
-import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.shimh.entity.Article;
 import com.shimh.entity.Comment;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- * @author shimh
- * <p>
- * 2018年1月25日
- */
+import java.util.List;
+
+
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
     List<Comment> findByArticleAndLevelOrderByCreateDateDesc(Article a, String level);

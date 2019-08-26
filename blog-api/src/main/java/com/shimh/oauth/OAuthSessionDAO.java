@@ -1,9 +1,6 @@
 package com.shimh.oauth;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.shimh.common.cache.RedisManager;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.ValidatingSession;
 import org.apache.shiro.session.mgt.eis.CachingSessionDAO;
@@ -11,16 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 
-import com.alibaba.fastjson.JSON;
-import com.shimh.common.cache.RedisManager;
+import java.io.Serializable;
 
-/**
- * 将session保存到redis
- *
- * @author shimh
- * <p>
- * 2018年1月23日
- */
+
 public class OAuthSessionDAO extends CachingSessionDAO implements InitializingBean {
 
     private static Logger logger = LoggerFactory.getLogger(OAuthSessionDAO.class);

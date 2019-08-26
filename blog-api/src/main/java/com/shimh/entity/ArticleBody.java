@@ -1,22 +1,10 @@
 package com.shimh.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Lob;
-import javax.persistence.Table;
-
+import com.shimh.common.entity.BaseEntity;
 import org.hibernate.annotations.Type;
 
-import com.shimh.common.entity.BaseEntity;
+import javax.persistence.*;
 
-/**
- * 文章内容
- *
- * @author shimh
- * <p>
- * 2018年1月23日
- */
 @Entity
 @Table(name = "me_article_body")
 public class ArticleBody extends BaseEntity<Long> {

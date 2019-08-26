@@ -1,28 +1,13 @@
 package com.shimh.entity;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.alibaba.fastjson.annotation.JSONField;
 import com.shimh.common.entity.BaseEntity;
+import org.hibernate.validator.constraints.NotBlank;
 
-/**
- * 用户
- *
- * @author shimh
- * <p>
- * 2018年1月23日
- */
+import javax.persistence.*;
+import java.util.Date;
+
+
 @Entity
 @Table(name = "sys_user")
 public class User extends BaseEntity<Long> {

@@ -1,19 +1,14 @@
 package com.shimh.repository;
 
-import java.util.List;
-
+import com.shimh.entity.Tag;
+import com.shimh.repository.wrapper.TagWrapper;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.shimh.entity.Tag;
-import com.shimh.repository.wrapper.TagWrapper;
+import java.util.List;
 
-/**
- * @author shimh
- * <p>
- * 2018年1月25日
- */
+
 public interface TagRepository extends JpaRepository<Tag, Integer>, TagWrapper {
 
     @Query(value = "select t.*,count(at.tag_id) as count from me_article_tag at "
