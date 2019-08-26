@@ -40,10 +40,10 @@ public class UploadController {
         String filePath = sdf.format(new Date());
 
         File baseFolder = new File(baseFolderPath + filePath);
-        System.out.println("baseFolder is " + baseFolderPath);
+        System.out.println("baseFolder is " + baseFolderPath + " file = " + filePath);
         if (!baseFolder.exists()) {
-            System.out.println("Create baseFolder");
-            baseFolder.mkdirs();
+            boolean x = baseFolder.mkdirs();
+            System.out.println("创建目录 " + baseFolder.getAbsolutePath());
         }
 
         url.append(request.getScheme())
@@ -70,7 +70,7 @@ public class UploadController {
 
         } catch (IOException e) {
             logger.error("文件上传错误 , uri: {} , caused by: ", request.getRequestURI(), e);
-            System.out.println("文件上传错误 , uri: {} , caused by: "+ request.getRequestURI());
+            System.out.println("文件上传错误 , uri: {} , caused by: " + request.getRequestURI());
             r.setResultCode(ResultCode.UPLOAD_ERROR);
         }
         return r;
