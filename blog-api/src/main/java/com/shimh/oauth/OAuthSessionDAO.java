@@ -17,7 +17,6 @@ public class OAuthSessionDAO extends CachingSessionDAO implements InitializingBe
 
     private RedisManager redisManager;
 
-
     @Override
     protected Serializable doCreate(Session session) {
         Serializable sessionId = generateSessionId(session);
@@ -27,7 +26,6 @@ public class OAuthSessionDAO extends CachingSessionDAO implements InitializingBe
         redisManager.set(sessionId.toString(), session, RedisManager.DEFAULT_EXPIRE);
         return sessionId;
     }
-
 
     @Override
     protected void doUpdate(Session session) {
@@ -60,12 +58,10 @@ public class OAuthSessionDAO extends CachingSessionDAO implements InitializingBe
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         if (null == this.redisManager) {
             logger.error("StringRedisTemplate should be not null.");
         }
 
     }
-
-
 }

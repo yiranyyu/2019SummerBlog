@@ -12,5 +12,4 @@ public interface ArticleWrapper {
     List<Article> listArticles(ArticleVo article, PageVo page);
 
     List<ArticleVo> listArchives();
-
 }
