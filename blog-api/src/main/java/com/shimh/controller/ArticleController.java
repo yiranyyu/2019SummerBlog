@@ -11,7 +11,6 @@ import com.shimh.entity.ArticleBody;
 import com.shimh.entity.Tag;
 import com.shimh.entity.User;
 import com.shimh.service.ArticleService;
-import com.shimh.service.TagService;
 import com.shimh.vo.ArticleVo;
 import com.shimh.vo.PageVo;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -26,12 +25,8 @@ import java.util.List;
 @RequestMapping(value = "/articles")
 public class ArticleController {
 
-
     @Autowired
     private ArticleService articleService;
-
-    @Autowired
-    private TagService tagService;
 
     @GetMapping
     @FastJsonView(

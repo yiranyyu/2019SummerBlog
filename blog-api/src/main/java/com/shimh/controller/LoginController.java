@@ -81,7 +81,6 @@ public class LoginController {
         } catch (Exception e) {
             r.setResultCode(ResultCode.ERROR);
         }
-
     }
 
     @RequestMapping(value = "/handleLogin")
