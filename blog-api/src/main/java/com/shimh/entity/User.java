@@ -12,9 +12,6 @@ import java.util.Date;
 @Table(name = "sys_user")
 public class User extends BaseEntity<Long> {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = -4454737765850239378L;
 
 
@@ -29,9 +26,6 @@ public class User extends BaseEntity<Long> {
     @Column(name = "password", length = 64)
     private String password;
 
-    /**
-     * 头像
-     */
     private String avatar;
 
     @Column(name = "email", unique = true, length = 20)
@@ -51,18 +45,12 @@ public class User extends BaseEntity<Long> {
     private String salt;
 
 
-    /**
-     * 创建时间
-     */
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
 
 
-    /**
-     * 最后一次登录时间
-     */
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "last_login")
     @Temporal(TemporalType.TIMESTAMP)
@@ -79,9 +67,6 @@ public class User extends BaseEntity<Long> {
      */
     private Boolean admin = false;
 
-    /**
-     * 逻辑删除flag
-     */
     private Boolean deleted = Boolean.FALSE;
 
     public String getAccount() {
@@ -187,6 +172,4 @@ public class User extends BaseEntity<Long> {
                 + ", createDate=" + createDate + ", lastLogin=" + lastLogin + ", status=" + status + ", admin=" + admin
                 + ", deleted=" + deleted + "]";
     }
-
-
 }

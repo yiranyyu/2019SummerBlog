@@ -11,9 +11,6 @@ import javax.persistence.Table;
 @Table(name = "me_tag")
 public class Tag extends BaseEntity<Integer> {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 5025313969040054182L;
 
     @NotBlank
@@ -21,7 +18,6 @@ public class Tag extends BaseEntity<Integer> {
 
     @NotBlank
     private String avatar;
-
 
     public String getTagname() {
         return tagname;
@@ -38,6 +34,4 @@ public class Tag extends BaseEntity<Integer> {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
-
-
 }

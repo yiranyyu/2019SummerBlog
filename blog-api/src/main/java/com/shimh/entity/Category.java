@@ -11,9 +11,6 @@ import javax.persistence.Table;
 @Table(name = "me_category")
 public class Category extends BaseEntity<Integer> {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 5025313969040054182L;
 
     @NotBlank

@@ -25,14 +25,13 @@ public class Comment extends BaseEntity<Integer> {
     private User author;
 
     /**
-     * 类型 0 文章的评论 1 评论的评论 2 评论的回复 @
+     * 0 文章的评论
+     * 1 评论的评论
+     * 2 评论的回复
      */
     @Column(name = "level", length = 1)
     private String level;
 
-    /**
-     * 创建时间
-     */
     @JSONField(format = "yyyy.MM.dd HH:mm")
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)

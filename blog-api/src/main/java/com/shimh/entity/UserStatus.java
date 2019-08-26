@@ -8,7 +8,7 @@ public enum UserStatus {
 
     private final String info;
 
-    private UserStatus(String info) {
+    UserStatus(String info) {
         this.info = info;
     }
 
