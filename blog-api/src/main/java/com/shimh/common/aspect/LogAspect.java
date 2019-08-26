@@ -82,5 +82,4 @@ public class LogAspect {
 
         logService.saveLog(log);
     }
-
 }

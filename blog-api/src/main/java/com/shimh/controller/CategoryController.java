@@ -120,6 +120,4 @@ public class CategoryController {
         r.setResultCode(ResultCode.SUCCESS);
         return r;
     }
-
-
 }

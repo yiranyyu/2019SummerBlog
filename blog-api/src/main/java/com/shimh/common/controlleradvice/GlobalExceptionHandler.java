@@ -93,5 +93,4 @@ public class GlobalExceptionHandler {
         }
         return HttpStatus.valueOf(statusCode);
     }
-
 }

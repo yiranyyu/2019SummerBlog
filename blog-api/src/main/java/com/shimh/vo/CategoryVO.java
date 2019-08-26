@@ -16,6 +16,4 @@ public class CategoryVO extends Category {
     public void setArticles(int articles) {
         this.articles = articles;
     }
-
-
 }

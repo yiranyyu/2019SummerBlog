@@ -15,6 +15,4 @@ public class TagVO extends Tag {
     public void setArticles(int articles) {
         this.articles = articles;
     }
-
-
 }

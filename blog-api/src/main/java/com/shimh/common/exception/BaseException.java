@@ -28,5 +28,4 @@ public class BaseException extends RuntimeException {
     public void setErrMsg(String errMsg) {
         this.errMsg = errMsg;
     }
-
 }

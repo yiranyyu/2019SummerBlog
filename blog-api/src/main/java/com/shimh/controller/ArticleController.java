@@ -193,6 +193,4 @@ public class ArticleController {
     public Result listArchives() {
         return Result.success(articleService.listArchives());
     }
-
-
 }

@@ -87,6 +87,4 @@ public class Result implements Serializable {
     public void setData(Object data) {
         this.data = data;
     }
-
-
 }

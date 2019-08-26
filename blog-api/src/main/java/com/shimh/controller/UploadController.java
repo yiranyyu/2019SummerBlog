@@ -70,7 +70,6 @@ public class UploadController {
             logger.error("文件上传错误 , uri: {} , caused by: ", request.getRequestURI(), e);
             r.setResultCode(ResultCode.UPLOAD_ERROR);
         }
-
         return r;
     }
 }

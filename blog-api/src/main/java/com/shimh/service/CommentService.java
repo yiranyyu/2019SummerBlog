@@ -20,6 +20,4 @@ public interface CommentService {
     Comment saveCommentAndChangeCounts(Comment comment);
 
     void deleteCommentByIdAndChangeCounts(Integer id);
-
-
 }

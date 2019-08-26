@@ -50,11 +50,6 @@ public class IpUtils {
         return ip;
     }
 
-    /**
-     * 获取ip地址
-     *
-     * @return
-     */
     public static String getIpAddr() {
         HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
         return getIpAddr(request);

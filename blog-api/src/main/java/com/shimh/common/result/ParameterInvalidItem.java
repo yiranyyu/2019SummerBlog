@@ -22,5 +22,4 @@ public class ParameterInvalidItem {
     public void setMessage(String message) {
         this.message = message;
     }
-
 }

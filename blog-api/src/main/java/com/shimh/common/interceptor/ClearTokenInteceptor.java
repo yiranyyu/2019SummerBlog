@@ -35,5 +35,4 @@ public class ClearTokenInteceptor extends HandlerInterceptorAdapter {
 
         return super.preHandle(request, response, handler);
     }
-
 }

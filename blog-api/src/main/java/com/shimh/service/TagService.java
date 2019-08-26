@@ -22,5 +22,4 @@ public interface TagService {
     List<TagVO> findAllDetail();
 
     TagVO getTagDetail(Integer tagId);
-
 }

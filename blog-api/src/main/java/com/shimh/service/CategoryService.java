@@ -21,5 +21,4 @@ public interface CategoryService {
     List<CategoryVO> findAllDetail();
 
     CategoryVO getCategoryDetail(Integer categoryId);
-
 }

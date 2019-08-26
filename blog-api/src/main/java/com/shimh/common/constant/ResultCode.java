@@ -88,5 +88,4 @@ public enum ResultCode {
     public String toString() {
         return this.name();
     }
-
 }

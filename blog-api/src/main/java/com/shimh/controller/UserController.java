@@ -114,5 +114,4 @@ public class UserController {
         r.setResultCode(ResultCode.SUCCESS);
         return r;
     }
-
 }

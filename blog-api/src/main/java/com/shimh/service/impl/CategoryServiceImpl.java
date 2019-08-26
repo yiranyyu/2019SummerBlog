@@ -62,5 +62,4 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryVO getCategoryDetail(Integer categoryId) {
         return categoryRepository.getCategoryDetail(categoryId);
     }
-
 }

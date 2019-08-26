@@ -96,6 +96,4 @@ public class CommentServiceImpl implements CommentService {
 
         commentRepository.delete(c);
     }
-
-
 }

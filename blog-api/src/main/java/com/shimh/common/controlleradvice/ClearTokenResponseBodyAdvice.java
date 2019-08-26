@@ -58,6 +58,4 @@ public class ClearTokenResponseBodyAdvice implements ResponseBodyAdvice {
     public void setRedisManager(RedisManager redisManager) {
         this.redisManager = redisManager;
     }
-
-
 }

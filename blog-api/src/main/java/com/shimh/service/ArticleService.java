@@ -36,5 +36,4 @@ public interface ArticleService {
     List<Article> listNewArticles(int limit);
 
     List<ArticleVo> listArchives();
-
 }
