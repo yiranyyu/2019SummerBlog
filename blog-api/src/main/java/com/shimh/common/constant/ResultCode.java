@@ -1,12 +1,6 @@
 package com.shimh.common.constant;
 
-/**
- * api接口返回 code和message
- *
- * @author shimh
- * <p>
- * 2018年1月23日
- */
+
 public enum ResultCode {
 
     /* 成功状态码 */
@@ -64,14 +58,6 @@ public enum ResultCode {
         this.message = message;
     }
 
-    public Integer code() {
-        return this.code;
-    }
-
-    public String message() {
-        return this.message;
-    }
-
     public static String getMessage(String name) {
         for (ResultCode item : ResultCode.values()) {
             if (item.name().equals(name)) {
@@ -88,6 +74,14 @@ public enum ResultCode {
             }
         }
         return null;
+    }
+
+    public Integer code() {
+        return this.code;
+    }
+
+    public String message() {
+        return this.message;
     }
 
     @Override

@@ -1,17 +1,11 @@
 package com.shimh.common.cache;
 
-import java.util.concurrent.TimeUnit;
-
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
-/**
- * RedisManager
- *
- * @author shimh
- * <p>
- * 2018年1月23日
- */
+import java.util.concurrent.TimeUnit;
+
+
 public class RedisManager {
 
     /**

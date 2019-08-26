@@ -1,42 +1,23 @@
 package com.shimh.controller;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import com.alibaba.fastjson.support.spring.annotation.FastJsonFilter;
 import com.alibaba.fastjson.support.spring.annotation.FastJsonView;
 import com.shimh.common.annotation.LogAnnotation;
-import com.shimh.entity.Article;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
-import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.subject.SubjectContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.shimh.common.constant.Base;
 import com.shimh.common.constant.ResultCode;
 import com.shimh.common.result.Result;
 import com.shimh.common.util.UserUtils;
 import com.shimh.entity.User;
 import com.shimh.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
-/**
- * 用户api
- *
- * @author shimh
- * <p>
- * 2018年1月23日
- */
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {

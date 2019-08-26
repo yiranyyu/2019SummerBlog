@@ -1,12 +1,11 @@
 package com.shimh.config;
 
+import com.shimh.common.cache.RedisManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-
-import com.shimh.common.cache.RedisManager;
 
 @Configuration
 public class RedisConfig {

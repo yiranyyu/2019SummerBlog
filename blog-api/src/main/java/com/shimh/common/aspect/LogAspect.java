@@ -1,13 +1,9 @@
 package com.shimh.common.aspect;
 
-import com.alibaba.druid.support.json.JSONUtils;
-import com.alibaba.fastjson.JSON;
 import com.shimh.common.annotation.LogAnnotation;
 import com.shimh.common.util.HttpContextUtils;
 import com.shimh.common.util.IpUtils;
-import com.shimh.common.util.UserUtils;
 import com.shimh.entity.Log;
-import com.shimh.entity.User;
 import com.shimh.service.LogService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -21,13 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Date;
 
-/**
- * 日志切面
- *
- * @author shimh
- * <p>
- * 2018年4月18日
- */
+
 @Aspect
 @Component
 public class LogAspect {

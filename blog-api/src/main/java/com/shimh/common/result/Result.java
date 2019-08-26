@@ -1,18 +1,12 @@
 package com.shimh.common.result;
 
+import com.shimh.common.constant.ResultCode;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.shimh.common.constant.ResultCode;
 
-/**
- * api接口数据返回封装
- *
- * @author shimh
- * <p>
- * 2018年1月23日
- */
 public class Result implements Serializable {
 
     private static final long serialVersionUID = -4762928619495260423L;

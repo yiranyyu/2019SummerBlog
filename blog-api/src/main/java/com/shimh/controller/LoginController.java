@@ -1,38 +1,24 @@
 package com.shimh.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.shimh.common.annotation.LogAnnotation;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.shimh.common.constant.Base;
 import com.shimh.common.constant.ResultCode;
 import com.shimh.common.result.Result;
 import com.shimh.entity.User;
 import com.shimh.oauth.OAuthSessionManager;
 import com.shimh.service.UserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.LockedAccountException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-/**
- * 登录
- *
- * @author shimh
- * <p>
- * 2018年1月23日
- */
+import javax.servlet.http.HttpServletRequest;
+
+
 @RestController
 public class LoginController {
 

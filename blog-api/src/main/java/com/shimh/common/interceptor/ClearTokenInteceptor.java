@@ -1,22 +1,15 @@
 package com.shimh.common.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.shimh.common.cache.RedisManager;
+import com.shimh.oauth.OAuthSessionManager;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.shimh.common.cache.RedisManager;
-import com.shimh.oauth.OAuthSessionManager;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-/**
- * Session超时，通知前端删除token
- *
- * @author shimh
- * <p>
- * 2018年1月30日
- */
+
 public class ClearTokenInteceptor extends HandlerInterceptorAdapter {
 
     private static final String SESSION_TIME_OUT_K = "SESSION_TIME_OUT";

@@ -1,9 +1,10 @@
 package com.shimh.config;
 
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
+import com.shimh.common.cache.RedisManager;
+import com.shimh.oauth.OAuthRealm;
+import com.shimh.oauth.OAuthSessionDAO;
+import com.shimh.oauth.OAuthSessionManager;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
@@ -13,12 +14,9 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
-import com.shimh.common.cache.RedisManager;
-import com.shimh.oauth.OAuthRealm;
-import com.shimh.oauth.OAuthSessionDAO;
-import com.shimh.oauth.OAuthSessionManager;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
