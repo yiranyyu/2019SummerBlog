@@ -43,7 +43,7 @@ public class UploadController {
         System.out.println("baseFolder is " + baseFolderPath + " file = " + filePath);
         if (!baseFolder.exists()) {
             boolean x = baseFolder.mkdirs();
-            System.out.println("创建目录 " + baseFolder.getAbsolutePath());
+            System.out.println("创建目录 " + baseFolder.getAbsolutePath() + " result = " + x);
         }
 
         url.append(request.getScheme())
