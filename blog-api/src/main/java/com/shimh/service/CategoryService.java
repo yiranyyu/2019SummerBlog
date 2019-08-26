@@ -1,15 +1,11 @@
 package com.shimh.service;
 
-import java.util.List;
-
 import com.shimh.entity.Category;
 import com.shimh.vo.CategoryVO;
 
-/**
- * @author shimh
- * <p>
- * 2018年1月25日
- */
+import java.util.List;
+
+
 public interface CategoryService {
 
     List<Category> findAll();

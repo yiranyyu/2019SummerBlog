@@ -1,27 +1,20 @@
 package com.shimh.service.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import com.shimh.entity.User;
-import com.shimh.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.shimh.common.util.UserUtils;
 import com.shimh.entity.Article;
 import com.shimh.entity.Comment;
 import com.shimh.repository.ArticleRepository;
 import com.shimh.repository.CommentRepository;
+import com.shimh.repository.UserRepository;
 import com.shimh.service.CommentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author shimh
- * <p>
- * 2018年1月25日
- */
+import java.util.Date;
+import java.util.List;
+
+
 @Service
 public class CommentServiceImpl implements CommentService {
 
@@ -78,12 +71,12 @@ public class CommentServiceImpl implements CommentService {
         comment.setCreateDate(new Date());
 
         //设置level
-        if(null == comment.getParent()){
+        if (null == comment.getParent()) {
             comment.setLevel("0");
-        }else{
-            if(null == comment.getToUser()){
+        } else {
+            if (null == comment.getToUser()) {
                 comment.setLevel("1");
-            }else{
+            } else {
                 comment.setLevel("2");
             }
         }

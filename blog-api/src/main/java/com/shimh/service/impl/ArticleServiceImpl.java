@@ -1,18 +1,5 @@
 package com.shimh.service.impl;
 
-import java.util.Date;
-import java.util.List;
-
-import com.shimh.vo.ArticleVo;
-import com.shimh.vo.PageVo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.shimh.common.util.UserUtils;
 import com.shimh.entity.Article;
 import com.shimh.entity.Category;
@@ -20,12 +7,16 @@ import com.shimh.entity.Tag;
 import com.shimh.entity.User;
 import com.shimh.repository.ArticleRepository;
 import com.shimh.service.ArticleService;
+import com.shimh.vo.ArticleVo;
+import com.shimh.vo.PageVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author shimh
- * <p>
- * 2018年1月25日
- */
+import java.util.Date;
+import java.util.List;
+
+
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
@@ -59,9 +50,9 @@ public class ArticleServiceImpl implements ArticleService {
     @Transactional
     public Integer publishArticle(Article article) {
 
-        if(null != article.getId()){
+        if (null != article.getId()) {
             return this.updateArticle(article);
-        }else{
+        } else {
             return this.saveArticle(article);
         }
 

@@ -1,15 +1,10 @@
 package com.shimh.service;
 
-import java.util.List;
-
 import com.shimh.entity.Tag;
 import com.shimh.vo.TagVO;
 
-/**
- * @author shimh
- * <p>
- * 2018年1月25日
- */
+import java.util.List;
+
 public interface TagService {
 
     List<Tag> findAll();

@@ -1,21 +1,16 @@
 package com.shimh.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.shimh.entity.Category;
 import com.shimh.repository.CategoryRepository;
 import com.shimh.service.CategoryService;
 import com.shimh.vo.CategoryVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author shimh
- * <p>
- * 2018年1月25日
- */
+import java.util.List;
+
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
 

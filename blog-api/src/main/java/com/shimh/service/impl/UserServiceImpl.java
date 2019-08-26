@@ -1,23 +1,17 @@
 package com.shimh.service.impl;
 
-import java.util.List;
-import java.util.Random;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.shimh.common.util.PasswordHelper;
 import com.shimh.entity.User;
 import com.shimh.repository.UserRepository;
 import com.shimh.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author shimh
- * <p>
- * 2018年1月23日
- */
+import java.util.List;
+import java.util.Random;
+
+
 @Service
 public class UserServiceImpl implements UserService {
 

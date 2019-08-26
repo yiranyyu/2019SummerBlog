@@ -1,14 +1,9 @@
 package com.shimh.service;
 
-import java.util.List;
-
 import com.shimh.entity.User;
 
-/**
- * @author shimh
- * <p>
- * 2018年1月23日
- */
+import java.util.List;
+
 public interface UserService {
 
     List<User> findAll();
