@@ -36,8 +36,6 @@ public class ArticleController {
             include = {@FastJsonFilter(clazz = User.class, props = {"nickname"})})
     @LogAnnotation(module = "文章", operation = "获取所有文章")
     public Result listArticles(ArticleVo article, PageVo page) {
-        System.out.println(article);
-        System.out.println(page);
         List<Article> articles = articleService.listArticles(article, page);
         return Result.success(articles);
     }
