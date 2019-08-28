@@ -43,6 +43,7 @@ public class FollowServiceImpl implements FollowService {
     }
 
     @Override
+    @Transactional
     public boolean unfollow(Long userId, Long followerId) {
         if (isFollowing(userId, followerId)) {
             followRepository.deleteAllByUserIdAndFollowerId(userId, followerId);

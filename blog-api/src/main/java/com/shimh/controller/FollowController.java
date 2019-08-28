@@ -7,6 +7,8 @@ import com.shimh.service.FollowService;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,10 +26,10 @@ public class FollowController {
     @Autowired
     private FollowService followService;
 
-    @PostMapping
-    @RequiresAuthentication
+    @GetMapping("/{userId}/{followerId}")
+    // @RequiresAuthentication
     @LogAnnotation(module = "关注", operation = "关注用户")
-    public Result followUser(@Validated @RequestBody Long userId, Long followerId) {
+    public Result followUser(@PathVariable("userId") Long userId, @PathVariable("followerId") Long followerId) {
         boolean state = followService.follow(userId, followerId);
         if (state) {
             return Result.success();
@@ -36,11 +38,11 @@ public class FollowController {
         }
     }
 
-    @PostMapping("/unfollow")
-    @RequiresAuthentication
+    @GetMapping("/unfollow/{userId}/{unFollowerId}")
+    // @RequiresAuthentication
     @LogAnnotation(module = "取消关注", operation = "取关用户")
-    public Result unfollowUser(@Validated @RequestBody Long userId, Long unfollowerId) {
-        boolean state = followService.unfollow(userId, unfollowerId);
+    public Result unfollowUser(@PathVariable("userId") Long userId, @PathVariable("unFollowerId") Long unFollowerId) {
+        boolean state = followService.unfollow(userId, unFollowerId);
         if (state) {
             return Result.success();
         } else {

@@ -5,6 +5,8 @@ import com.shimh.common.entity.BaseEntity;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 
 /**
@@ -19,15 +21,11 @@ public class Follow extends BaseEntity<Long> {
 
     private static final long serialVersionUID = -48271398732891778L;
 
-//    @NotBlank
-//    @Column(name = "id", length = 10)
-//    private Integer id;
-
-    @NotBlank
+    @NotNull
     @Column(name = "user_id", length = 20)
     private Long userId;
 
-    @NotBlank
+    @NotNull
     @Column(name = "follower_id", length = 20)
     private Long followerId;
 
@@ -39,6 +37,8 @@ public class Follow extends BaseEntity<Long> {
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
+
+    public Follow() {}
 
     public Date getDateCreated() {
         return dateCreated;
