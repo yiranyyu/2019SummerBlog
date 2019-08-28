@@ -151,4 +151,15 @@ CREATE TABLE `sys_user` (
   UNIQUE KEY `UK_ahtq5ew3v0kt1n7hf1sgp7p8l` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_follow`;
+CREATE TABLE `sys_follow` (
+  `id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL,
+  `follower_id` bigint(20) DEFAULT NULL,
+  `time_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  CONSTRAINT FOREIGN KEY (`user_id`) REFERENCES `sys_user` (`id`),
+  CONSTRAINT FOREIGN KEY (`follower_id`) REFERENCES `sys_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
 SET FOREIGN_KEY_CHECKS = 1;
