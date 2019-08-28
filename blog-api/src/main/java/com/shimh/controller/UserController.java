@@ -34,6 +34,24 @@ public class UserController {
         return Result.success(users);
     }
 
+    @GetMapping("/uid")
+    @LogAnnotation(module = "用户", operation = "根据用户名获取ID")
+    @RequiresRoles(Base.ROLE_ADMIN)
+    public Result getIdByAccount(@PathVariable("account") String account) {
+
+        Result r = new Result();
+        if (null == account) {
+            r.setResultCode(ResultCode.PARAM_IS_BLANK);
+            return r;
+        }
+
+        User user = userService.getUserByAccount(account);
+        Long uid = user.getId();
+        r.setResultCode(ResultCode.SUCCESS);
+        r.setData(uid);
+        return r;
+    }
+    
     @GetMapping("/{id}")
     @LogAnnotation(module = "用户", operation = "根据id获取用户")
     @RequiresRoles(Base.ROLE_ADMIN)
