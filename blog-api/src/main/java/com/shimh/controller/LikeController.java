@@ -3,7 +3,7 @@ package com.shimh.controller;
 import com.shimh.common.annotation.LogAnnotation;
 import com.shimh.common.constant.ResultCode;
 import com.shimh.common.result.Result;
-import com.shimh.service.FollowService;
+import com.shimh.service.LikeService;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,17 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 8/28/2019
  **/
 @RestController
-@RequestMapping(value = "/follow")
-public class FollowController {
+@RequestMapping(value = "/like")
+public class LikeController {
 
     @Autowired
-    private FollowService followService;
+    private LikeService likeService;
 
-    @GetMapping("/{userId}/{followerId}")
+    @GetMapping("/{userId}/{articleId}")
     // @RequiresAuthentication
-    @LogAnnotation(module = "关注", operation = "关注用户")
-    public Result followUser(@PathVariable("userId") Long userId, @PathVariable("followerId") Long followerId) {
-        boolean state = followService.follow(userId, followerId);
+    @LogAnnotation(module = "点赞", operation = "点赞文章")
+    public Result likeArticle(@PathVariable("userId") Long userId, @PathVariable("articleId") Long articleId) {
+        boolean state = likeService.like(userId, articleId);
         if (state) {
             return Result.success();
         } else {
@@ -35,11 +35,11 @@ public class FollowController {
         }
     }
 
-    @GetMapping("/unfollow/{userId}/{unFollowerId}")
+    @GetMapping("/unlike/{userId}/{articleId}")
     // @RequiresAuthentication
-    @LogAnnotation(module = "取消关注", operation = "取关用户")
-    public Result unfollowUser(@PathVariable("userId") Long userId, @PathVariable("unFollowerId") Long unFollowerId) {
-        boolean state = followService.unfollow(userId, unFollowerId);
+    @LogAnnotation(module = "取消赞", operation = "取消赞文章")
+    public Result unLikeArticle(@PathVariable("userId") Long userId, @PathVariable("articleId") Long articleId) {
+        boolean state = likeService.unlike(userId, articleId);
         if (state) {
             return Result.success();
         } else {

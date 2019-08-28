@@ -3,30 +3,31 @@ package com.shimh.entity;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.shimh.common.entity.BaseEntity;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import java.util.Date;
 
 /**
- * @author MDC
+ * @author bryantma
  * @version 1.0
  * @since 8/28/2019
  **/
 
 @Entity
-@Table(name = "sys_follow")
-public class Follow extends BaseEntity<Long> {
+@Table(name = "sys_like")
+public class Like extends BaseEntity<Long> {
 
-    private static final long serialVersionUID = -48271398732891778L;
+    private static final long serialVersionUID = -491778913278912738L;
 
     @NotNull
     @Column(name = "user_id", length = 20)
     private Long userId;
 
     @NotNull
-    @Column(name = "follower_id", length = 20)
-    private Long followerId;
+    @Column(name = "article_id", length = 11)
+    private Long articleId;
 
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "time_created")
@@ -37,7 +38,7 @@ public class Follow extends BaseEntity<Long> {
         return serialVersionUID;
     }
 
-    public Follow() {}
+    public Like() {}
 
     public Date getDateCreated() {
         return dateCreated;
@@ -55,21 +56,21 @@ public class Follow extends BaseEntity<Long> {
         this.userId = userId;
     }
 
-    public Follow(Long userId, Long followerId) {
+    public Like(Long userId, Long articleId) {
         this.userId = userId;
-        this.followerId = followerId;
+        this.articleId = articleId;
     }
 
-    public Long getFollowerId() {
-        return followerId;
+    public Long getArticleId() {
+        return articleId;
     }
 
-    public void setFollowerId(Long followerId) {
-        this.followerId = followerId;
-    }
+    //public void setFollowerId(Long followerId) {
+    //    this.followerId = followerId;
+    //}
 
     @Override
     public String toString() {
-        return "Follow [user_id=" + userId + ", follower_id=" + followerId + ", date_created=" + dateCreated + "]";
+        return "Like [user_id=" + userId + ", article_id=" + articleId + ", date_created=" + dateCreated + "]";
     }
 }
