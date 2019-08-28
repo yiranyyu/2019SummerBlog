@@ -31,7 +31,7 @@ public class LikeController {
         if (state) {
             return Result.success();
         } else {
-            return Result.error(ResultCode.DATA_ALREADY_EXISTED, "Already followed or other inner error");
+            return Result.error(ResultCode.DATA_ALREADY_EXISTED, "Already liked or other inner error");
         }
     }
 
@@ -43,7 +43,7 @@ public class LikeController {
         if (state) {
             return Result.success();
         } else {
-            return Result.error(ResultCode.DATA_ALREADY_EXISTED, "Already followed or other inner error");
+            return Result.error(ResultCode.DATA_ALREADY_EXISTED, "Already liked or other inner error");
         }
     }
 }

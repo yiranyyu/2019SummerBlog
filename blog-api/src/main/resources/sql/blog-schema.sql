@@ -166,8 +166,8 @@ DROP TABLE IF EXISTS `sys_like`;
 CREATE TABLE `sys_like` (
   `id` bigint(10) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT NULL,
-  `article_id` bigint(11) DEFAULT NULL,
-  `time_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `article_id` int(11) DEFAULT NULL,
+  `time_created` timestamp DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   CONSTRAINT FOREIGN KEY (`user_id`) REFERENCES `sys_user` (`id`),
   CONSTRAINT FOREIGN KEY (`article_id`) REFERENCES `me_article` (`id`)

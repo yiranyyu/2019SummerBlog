@@ -95,4 +95,4 @@ INSERT INTO `sys_follow` (`user_id`, `follower_id`) values ('15', '1');
 --records of sys_like
 --
 INSERT INTO `sys_like` (`user_id`, `article_id`) values ('17', '1');
-INSERT INTO `sys_like` (`user_id`, `article_id`) values ('21', '2');
+INSERT INTO `sys_like` (`user_id`, `article_id`) values ('21', '9');
