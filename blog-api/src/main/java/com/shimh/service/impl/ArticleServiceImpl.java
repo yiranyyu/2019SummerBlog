@@ -118,6 +118,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<Article> listArticlesByTitleLike(String pattern) {
+        return articleRepository.findAllByTitleLike(pattern);
+    }
+
+    @Override
     @Transactional
     public Article getArticleAndAddViews(Integer id) {
         int count = 1;

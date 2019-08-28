@@ -25,4 +25,6 @@ public interface ArticleRepository extends JpaRepository<Article, Integer>, Arti
     List<Article> findOrderByCreateDateAndLimit(@Param("limit") int limit);
 
     List<Article> findAllByAuthor(User author);
+
+    List<Article> findAllByTitleLike(String pattern);
 }

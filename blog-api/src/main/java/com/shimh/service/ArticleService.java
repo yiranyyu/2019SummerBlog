@@ -31,6 +31,8 @@ public interface ArticleService {
 
     List<Article> listArticlesByUser(Long userID);
 
+    List<Article> listArticlesByTitleLike(String pattern);
+
     Article getArticleAndAddViews(Integer id);
 
     List<Article> listHotArticles(int limit);
