@@ -21,7 +21,7 @@ public class LikeServiceImpl implements LikeService {
     private LikeRepository likeRepository;
 
     @Override
-    public boolean hasLiked(Long userId, Long articlerId) {
+    public boolean hasLiked(Long userId, Long articleId) {
         Like found = likeRepository.findByUserIdAndArticleId(userId, articleId);
         return found != null;
     }
