@@ -51,11 +51,11 @@ public class UserController {
         r.setData(uid);
         return r;
     }
-    
+
     @GetMapping("/{id}")
     @LogAnnotation(module = "用户", operation = "根据id获取用户")
     @RequiresRoles(Base.ROLE_ADMIN)
-    public Result getUserById(@PathVariable("id") Long id) {
+    public Long getUserById(@PathVariable("id") Long id) {
 
         Result r = new Result();
 
@@ -68,7 +68,8 @@ public class UserController {
 
         r.setResultCode(ResultCode.SUCCESS);
         r.setData(user);
-        return r;
+        Long uid = user.getId();
+        return uid;
     }
 
     @GetMapping("/currentUser")
