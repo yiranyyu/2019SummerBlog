@@ -134,6 +134,19 @@ public class ArticleController {
         return Result.success(articles);
     }
 
+    @GetMapping("/user/{id}")
+    @FastJsonView(
+            exclude = {
+                    @FastJsonFilter(clazz = Article.class, props = {"body", "category", "comments"}),
+                    @FastJsonFilter(clazz = Tag.class, props = {"id", "avatar"})},
+            include = {@FastJsonFilter(clazz = User.class, props = {"nickname"})})
+    @LogAnnotation(module = "文章", operation = "根据用户获取文章")
+    public Result listArticlesByUser(@PathVariable Long id) {
+        List<Article> articles = articleService.listArticlesByUser(id);
+
+        return Result.success(articles);
+    }
+
     @PostMapping("/publish")
     @RequiresAuthentication
     @LogAnnotation(module = "文章", operation = "发布文章")

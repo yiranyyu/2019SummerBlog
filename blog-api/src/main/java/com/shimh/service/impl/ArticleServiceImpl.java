@@ -110,6 +110,14 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<Article> listArticlesByUser(Long userID){
+        User u = new User();
+        u.setId(userID);
+
+        return articleRepository.findAllByAuthor(u);
+    }
+
+    @Override
     @Transactional
     public Article getArticleAndAddViews(Integer id) {
         int count = 1;
