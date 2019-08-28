@@ -48,7 +48,7 @@ public class UserController {
         Long uid = userService.getUserIdByAccount(account);
         
         r.setResultCode(ResultCode.SUCCESS);
-        r.setData(uid);
+        r.setData(Long.toString(uid));
         return r;
     }
     
