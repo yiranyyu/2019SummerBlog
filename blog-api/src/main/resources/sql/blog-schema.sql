@@ -162,4 +162,15 @@ CREATE TABLE `sys_follow` (
   CONSTRAINT FOREIGN KEY (`follower_id`) REFERENCES `sys_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_like`;
+CREATE TABLE `sys_like` (
+  `id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL,
+  `article_id` int(11) DEFAULT NULL,
+  `time_created` timestamp DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  CONSTRAINT FOREIGN KEY (`user_id`) REFERENCES `sys_user` (`id`),
+  CONSTRAINT FOREIGN KEY (`article_id`) REFERENCES `me_article` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
 SET FOREIGN_KEY_CHECKS = 1;
