@@ -34,11 +34,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.findOne(id);
     }
 
-    @Override
+    /*@Override
     @Transactional
     public Long getUserIdByAccount(String account){
         return userRepository.findByAccount(account).getId();
-    }
+    }*/
 
     @Override
     @Transactional

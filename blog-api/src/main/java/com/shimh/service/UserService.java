@@ -12,7 +12,7 @@ public interface UserService {
 
     User getUserById(Long id);
 
-    Long getUserIdByAccount(String account);
+    //Long getUserIdByAccount(String account);
     
     Long saveUser(User user);
 
