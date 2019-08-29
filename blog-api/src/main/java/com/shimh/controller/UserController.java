@@ -34,10 +34,10 @@ public class UserController {
         return Result.success(users);
     }
 
-    @GetMapping("/uid")
+    @GetMapping("/{account}")
     @LogAnnotation(module = "用户", operation = "根据用户名获取ID")
     //@RequiresRoles(Base.ROLE_ADMIN)
-    public Result getIdByAccount(@PathVariable("uid") String account) {
+    public Result getIdByAccount(@PathVariable("account") String account) {
         
         Result r = new Result();
         if (null == account) {
