@@ -51,28 +51,30 @@ public class ArticleRepositoryImpl implements ArticleWrapper {
         StringBuilder hql = new StringBuilder("from Article a ");
 
         if (null != article.getTagId()) {
-
             hql.append(" inner join fetch a.tags t");
         }
 
         hql.append(" where 1=1 ");
 
-        if (null != article.getCategoryId()) {
+        if (null != article.getUserId()){
+            System.out.println("ID is " + article.getUserId());
+            hql.append(" and a.author.id = " + article.getUserId());
+        }
 
+        if (null != article.getCategoryId()) {
             hql.append(" and a.category.id = :categoryId");
         }
 
         if (null != article.getTagId()) {
-
             hql.append(" and t.id = :tagId");
         }
 
 
-        if (null != article.getYear() && !"".equals(article.getYear())) {
+        if (null != article.getYear()) {
             hql.append(" and YEAR(a.createDate) = :year");
         }
 
-        if (null != article.getMonth() && !"".equals(article.getMonth())) {
+        if (null != article.getMonth()) {
             hql.append(" and MONTH(a.createDate) = :month");
         }
 
@@ -112,70 +114,6 @@ public class ArticleRepositoryImpl implements ArticleWrapper {
         }
 
         return query.list();
-
-//        StringBuilder hql = new StringBuilder("select a.* from me_article a ");
-//
-//        if (null != article.getTagId()) {
-//
-//            hql.append(" left join me_article_tag at on at.article_id = a.id");
-//        }
-//
-//        hql.append(" where 1=1 ");
-//
-//        if (null != article.getCategoryId()) {
-//
-//            hql.append(" and a.category_id = :categoryId");
-//        }
-//
-//        if (null != article.getTagId()) {
-//
-//            hql.append(" and at.tag_id = :tagId");
-//        }
-//
-//
-//        if (null != article.getYear() && !"".equals(article.getYear())) {
-//            hql.append(" and YEAR(a.createDate) = :year");
-//        }
-//
-//        if (null != article.getMonth() && !"".equals(article.getMonth())) {
-//            hql.append(" and MONTH(a.createDate) = :month");
-//        }
-//
-//        if (null != page.getName() && !"".equals(page.getName())) {
-//            hql.append(" order by ");
-//            hql.append(page.getName());
-//        }
-//
-//        if (null != page.getSort() && !"".equals(page.getSort())) {
-//            hql.append(" ");
-//            hql.append(page.getSort());
-//        }
-//
-//
-//        SQLQuery query = getSession().createSQLQuery(hql.toString());
-//
-//
-//        if (null != article.getYear() && !"".equals(article.getYear())) {
-//            query.setParameter("year", article.getYear());
-//        }
-//
-//        if (null != article.getMonth() && !"".equals(article.getMonth())) {
-//            query.setParameter("month", article.getMonth());
-//        }
-//
-//        if (null != article.getTagId()) {
-//            query.setParameter("tagId", article.getTagId());
-//        }
-//
-//        if (null != page.getPageNumber() && null != page.getPageSize()) {
-//            query.setFirstResult(page.getPageSize() * (page.getPageNumber() - 1));
-//            query.setMaxResults(page.getPageSize());
-//        }
-//
-//        query.addEntity(Article.class);
-//
-//        return query.list();
-
     }
 
     @Override

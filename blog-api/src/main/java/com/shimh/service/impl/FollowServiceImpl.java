@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -36,7 +37,9 @@ public class FollowServiceImpl implements FollowService {
     @Transactional
     public boolean follow(Long userId, Long followerId) {
         if (!isFollowing(userId, followerId)) {
-            followRepository.save(new Follow(userId, followerId));
+            Follow follow = new Follow(userId, followerId);
+            follow.setDateCreated(new Date());
+            followRepository.save(follow);
             return true;
         }
         return false;

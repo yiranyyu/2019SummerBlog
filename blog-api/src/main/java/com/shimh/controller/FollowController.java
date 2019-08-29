@@ -27,6 +27,7 @@ public class FollowController {
     // @RequiresAuthentication
     @LogAnnotation(module = "关注", operation = "关注用户")
     public Result followUser(@PathVariable("userId") Long userId, @PathVariable("followerId") Long followerId) {
+        System.out.println("" + userId + " " + followerId);
         boolean state = followService.follow(userId, followerId);
         if (state) {
             return Result.success();

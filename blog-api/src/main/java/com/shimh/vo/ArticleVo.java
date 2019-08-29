@@ -4,15 +4,29 @@ import com.shimh.entity.Article;
 
 public class ArticleVo extends Article {
 
+    private String userName;
+    private Long userId;
     private Integer year;
-
     private Integer month;
-
     private Integer tagId;
-
     private Integer categoryId;
-
     private Integer count;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public Integer getMonth() {
         return month;

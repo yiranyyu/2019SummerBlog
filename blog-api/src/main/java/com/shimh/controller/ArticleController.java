@@ -11,6 +11,7 @@ import com.shimh.entity.ArticleBody;
 import com.shimh.entity.Tag;
 import com.shimh.entity.User;
 import com.shimh.service.ArticleService;
+import com.shimh.service.UserService;
 import com.shimh.vo.ArticleVo;
 import com.shimh.vo.PageVo;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -28,6 +29,9 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping
     @FastJsonView(
             exclude = {
@@ -36,6 +40,11 @@ public class ArticleController {
             include = {@FastJsonFilter(clazz = User.class, props = {"nickname"})})
     @LogAnnotation(module = "文章", operation = "获取所有文章")
     public Result listArticles(ArticleVo article, PageVo page) {
+        System.out.println(article.getUserName());
+        if (article.getUserName() != null) {
+            Long id = userService.getUserByAccount(article.getUserName()).getId();
+            article.setUserId(id);
+        }
         List<Article> articles = articleService.listArticles(article, page);
         return Result.success(articles);
     }
