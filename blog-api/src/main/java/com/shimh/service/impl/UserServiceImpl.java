@@ -34,6 +34,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.findOne(id);
     }
 
+    /*@Override
+    @Transactional
+    public Long getUserIdByAccount(String account){
+        return userRepository.findByAccount(account).getId();
+    }*/
+
     @Override
     @Transactional
     public Long saveUser(User user) {
