@@ -3,13 +3,17 @@ package com.shimh.controller;
 import com.shimh.common.annotation.LogAnnotation;
 import com.shimh.common.constant.ResultCode;
 import com.shimh.common.result.Result;
+import com.shimh.entity.Follow;
 import com.shimh.service.FollowService;
+import com.shimh.service.UserService;
+
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 /**
  * @author bryantma
@@ -23,8 +27,11 @@ public class FollowController {
     @Autowired
     private FollowService followService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/{userId}/{followerId}")
-    // @RequiresAuthentication
+    @RequiresAuthentication
     @LogAnnotation(module = "关注", operation = "关注用户")
     public Result followUser(@PathVariable("userId") Long userId, @PathVariable("followerId") Long followerId) {
         System.out.println("" + userId + " " + followerId);
@@ -36,8 +43,17 @@ public class FollowController {
         }
     }
 
+    @GetMapping("/followList/{userId}")
+    @RequiresAuthentication
+    @LogAnnotation(module = "关注", operation = "返回关注列表")
+    public Result getFollowList(@PathVariable("userId") String userName) {
+        Long userId = userService.getUserByAccount(userName).getId();
+        List<Follow> followList = followService.getMyFollowing(userId);
+        return Result.success(followList);
+    }
+
     @GetMapping("/unfollow/{userId}/{unFollowerId}")
-    // @RequiresAuthentication
+    @RequiresAuthentication
     @LogAnnotation(module = "取消关注", operation = "取关用户")
     public Result unfollowUser(@PathVariable("userId") Long userId, @PathVariable("unFollowerId") Long unFollowerId) {
         boolean state = followService.unfollow(userId, unFollowerId);

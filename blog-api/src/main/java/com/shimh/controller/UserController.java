@@ -9,6 +9,8 @@ import com.shimh.common.result.Result;
 import com.shimh.common.util.UserUtils;
 import com.shimh.entity.User;
 import com.shimh.service.UserService;
+
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
 
 @RestController
 @RequestMapping(value = "/users")
@@ -36,9 +37,9 @@ public class UserController {
 
     @GetMapping("/guid/{account}")
     @LogAnnotation(module = "用户", operation = "根据用户名获取ID")
-    //@RequiresRoles(Base.ROLE_ADMIN)
+    // @RequiresRoles(Base.ROLE_ADMIN)
     public Result getIdByAccount(@PathVariable("account") String account) {
-        
+
         Result r = new Result();
         if (null == account) {
             r.setResultCode(ResultCode.PARAM_IS_BLANK);
@@ -46,16 +47,17 @@ public class UserController {
         }
 
         Long uid = userService.getUserByAccount(account).getId();
-        
+
         r.setResultCode(ResultCode.SUCCESS);
         r.setData(uid);
         return r;
     }
-    
+
     @GetMapping("/{id}")
     @LogAnnotation(module = "用户", operation = "根据id获取用户")
-    @RequiresRoles(Base.ROLE_ADMIN)
+    @RequiresAuthentication
     public Result getUserById(@PathVariable("id") Long id) {
+        System.out.println("Getting name of " + id);
 
         Result r = new Result();
 
@@ -72,8 +74,7 @@ public class UserController {
     }
 
     @GetMapping("/currentUser")
-    @FastJsonView(
-            include = {@FastJsonFilter(clazz = User.class, props = {"id", "account", "nickname", "avatar"})})
+    @FastJsonView(include = { @FastJsonFilter(clazz = User.class, props = { "id", "account", "nickname", "avatar" }) })
     @LogAnnotation(module = "用户", operation = "获取当前登录用户")
     public Result getCurrentUser(HttpServletRequest request) {
 
