@@ -34,7 +34,7 @@ public class UserController {
         return Result.success(users);
     }
 
-    @GetMapping("/{account}")
+    @GetMapping("/guid/{account}")
     @LogAnnotation(module = "用户", operation = "根据用户名获取ID")
     //@RequiresRoles(Base.ROLE_ADMIN)
     public Result getIdByAccount(@PathVariable("account") String account) {
