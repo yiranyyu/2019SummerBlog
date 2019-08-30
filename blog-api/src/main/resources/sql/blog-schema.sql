@@ -173,4 +173,18 @@ CREATE TABLE `sys_like` (
   CONSTRAINT FOREIGN KEY (`article_id`) REFERENCES `me_article` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
+
+--
+-- records for avatar
+--
+DROP TABLE IF EXISTS `me_avatar`;
+CREATE TABLE `me_avatar` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `avatar` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT FOREIGN KEY (`username`) REFERENCES sys_user(`account`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+
 SET FOREIGN_KEY_CHECKS = 1;
