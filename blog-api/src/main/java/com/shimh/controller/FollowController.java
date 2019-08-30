@@ -63,4 +63,13 @@ public class FollowController {
             return Result.error(ResultCode.DATA_ALREADY_EXISTED, "Already followed or other inner error");
         }
     }
+
+    @GetMapping("/isFollowing/{userId}/{followerId}")
+    @RequiresAuthentication
+    @LogAnnotation(module = "关注", operation = "返回是否关注")
+    public Result getIfFollowing(@PathVariable("userId") Long userId, @PathVariable("followerId") Long followerId) {
+        boolean state = followService.isFollowing(userId, followerId);
+        System.out.println("Checking for " + userId + " and " + followerId);
+        return Result.success(state);
+    }
 }
