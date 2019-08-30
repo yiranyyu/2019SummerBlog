@@ -179,6 +179,7 @@ public class ArticleController {
             return r;
         }
 
+
         Integer articleId = articleService.updateArticle(article);
 
         r.setResultCode(ResultCode.SUCCESS);

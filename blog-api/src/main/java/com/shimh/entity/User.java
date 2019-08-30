@@ -7,13 +7,11 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.*;
 import java.util.Date;
 
-
 @Entity
 @Table(name = "sys_user")
 public class User extends BaseEntity<Long> {
 
     private static final long serialVersionUID = -4454737765850239378L;
-
 
     @NotBlank
     @Column(name = "account", unique = true, length = 10)
@@ -29,7 +27,7 @@ public class User extends BaseEntity<Long> {
     private String avatar;
 
     @Column(name = "email", unique = true, length = 20)
-    private String email;  // 邮箱
+    private String email; // 邮箱
 
     @NotBlank
     @Column(name = "nickname", length = 10)
@@ -38,18 +36,15 @@ public class User extends BaseEntity<Long> {
     @Column(name = "mobile_phone_number", length = 20)
     private String mobilePhoneNumber;
 
-
     /**
      * 加密密码时使用的种子
      */
     private String salt;
 
-
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
-
 
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "last_login")
@@ -167,9 +162,8 @@ public class User extends BaseEntity<Long> {
 
     @Override
     public String toString() {
-        return "User [account=" + account + ", password=" + password + ", avatar=" + avatar + ", email=" + email
-                + ", nickname=" + nickname + ", mobilePhoneNumber=" + mobilePhoneNumber + ", salt=" + salt
-                + ", createDate=" + createDate + ", lastLogin=" + lastLogin + ", status=" + status + ", admin=" + admin
-                + ", deleted=" + deleted + "]";
+        return "User [account=" + account + ", password=" + password + ", email=" + email + ", nickname=" + nickname
+                + ", mobilePhoneNumber=" + mobilePhoneNumber + ", salt=" + salt + ", createDate=" + createDate
+                + ", lastLogin=" + lastLogin + ", status=" + status + ", admin=" + admin + ", deleted=" + deleted + "]";
     }
 }

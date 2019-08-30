@@ -100,16 +100,17 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    @RequiresRoles(Base.ROLE_ADMIN)
+    @RequiresAuthentication
     @LogAnnotation(module = "用户", operation = "修改用户")
     public Result updateUser(@RequestBody User user) {
         Result r = new Result();
-
-        if (null == user.getId()) {
+        System.out.println(user.getAvatar().substring(0, 50));
+        User origin = userService.getUserByAccount(user.getAccount());
+        if (null == origin) {
             r.setResultCode(ResultCode.USER_NOT_EXIST);
             return r;
         }
-
+        user.setId(origin.getId());
         Long userId = userService.updateUser(user);
 
         r.setResultCode(ResultCode.SUCCESS);

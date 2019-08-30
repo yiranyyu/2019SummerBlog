@@ -136,7 +136,7 @@ CREATE TABLE `sys_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `account` varchar(64) DEFAULT NULL,
   `admin` bit(1) DEFAULT NULL,
-  `avatar` varchar(255) DEFAULT NULL,
+  `avatar` text DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
   `deleted` bit(1) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
