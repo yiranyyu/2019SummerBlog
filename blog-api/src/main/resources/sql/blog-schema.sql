@@ -105,7 +105,7 @@ CREATE TABLE `me_comment` (
 DROP TABLE IF EXISTS `me_tag`;
 CREATE TABLE `me_tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `avatar` varchar(255) DEFAULT NULL,
+  `avatar` mediumtext DEFAULT NULL,
   `tagname` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
