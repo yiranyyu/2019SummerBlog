@@ -7,6 +7,8 @@ import java.util.List;
 public interface UserService {
 
     List<User> findAll();
+    
+    List<User> listUsersByAccountLike(String pattern);
 
     User getUserByAccount(String account);
 

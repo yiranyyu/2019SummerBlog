@@ -7,6 +7,8 @@ import com.shimh.common.constant.Base;
 import com.shimh.common.constant.ResultCode;
 import com.shimh.common.result.Result;
 import com.shimh.common.util.UserUtils;
+import com.shimh.entity.Article;
+import com.shimh.entity.Tag;
 import com.shimh.entity.User;
 import com.shimh.service.UserService;
 
@@ -32,6 +34,20 @@ public class UserController {
     public Result listUsers() {
         List<User> users = userService.findAll();
 
+        return Result.success(users);
+    }
+
+    @GetMapping("/searchUser/{account}")
+    @FastJsonView(
+            exclude = {
+                    @FastJsonFilter(clazz = Article.class, props = {"body", "category", "comments"}),
+                    @FastJsonFilter(clazz = Tag.class, props = {"id", "avatar"})},
+            include = {@FastJsonFilter(clazz = User.class, props = {"nickname"})})
+    @LogAnnotation(module = "用户", operation = "搜索用户")
+    public Result searchByTitle(@PathVariable String account) {
+        String pattern = String.format("%%%s%%", account);
+        System.out.println("Search by username " + pattern);
+        List<User> users = userService.listUsersByAccountLike(pattern);
         return Result.success(users);
     }
 

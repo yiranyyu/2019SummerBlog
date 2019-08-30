@@ -34,6 +34,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.findOne(id);
     }
 
+    @Override
+    public List<User> listUsersByAccountLike(String pattern) {
+        return userRepository.findAllByTitleLike(pattern);
+    }
     /*@Override
     @Transactional
     public Long getUserIdByAccount(String account){
