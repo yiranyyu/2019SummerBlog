@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService {
     public void deleteUserById(Long id) {
         userRepository.delete(id);
     }
+
+    @Override
+    public List<User> listUsersByNicknameLike(String pattern) {
+        return userRepository.findAllByNicknameLike(pattern);
+    }
 }

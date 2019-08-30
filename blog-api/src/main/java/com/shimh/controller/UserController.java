@@ -53,6 +53,34 @@ public class UserController {
         return r;
     }
 
+    @GetMapping("/guser/{account}")
+    @LogAnnotation(module = "用户", operation = "根据用户名获取用户")
+    // @RequiresRoles(Base.ROLE_ADMIN)
+    public Result getUserByAccount(@PathVariable("account") String account) {
+        System.out.println("Get user " + account);
+        Result r = new Result();
+        if (null == account) {
+            r.setResultCode(ResultCode.PARAM_IS_BLANK);
+            return r;
+        }
+
+        //Long uid = userService.getUserByAccount(account).getId();
+        User user = userService.getUserByAccount(account);
+
+        r.setResultCode(ResultCode.SUCCESS);
+        r.setData(user);
+        return r;
+    }
+
+    @GetMapping("/searchUser/{account}")
+    @LogAnnotation(module = "用户", operation = "搜索用户")
+    public Result searchByTitle(@PathVariable String account) {
+        String pattern = String.format("%%%s%%", account);
+        System.out.println("Search by username " + pattern);
+        List<User> users = userService.listUsersByNicknameLike(pattern);
+        return Result.success(users);
+    }
+
     @GetMapping("/{id}")
     @LogAnnotation(module = "用户", operation = "根据id获取用户")
     @RequiresAuthentication

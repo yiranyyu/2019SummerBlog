@@ -12,8 +12,8 @@ public interface UserService {
 
     User getUserById(Long id);
 
-    //Long getUserIdByAccount(String account);
-    
+    List<User> listUsersByNicknameLike(String pattern);
+
     Long saveUser(User user);
 
     Long updateUser(User user);
