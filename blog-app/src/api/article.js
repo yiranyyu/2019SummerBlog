@@ -2,6 +2,7 @@ import request from '@/request'
 
 
 export function getArticles(query, page) {
+  console.log('Get articles with ' + JSON.stringify(query))
   return request({
     url: '/articles',
     method: 'get',
@@ -13,14 +14,30 @@ export function getArticles(query, page) {
       year: query.year,
       month: query.month,
       tagId: query.tagId,
-      categoryId: query.categoryId
+      categoryId: query.categoryId,
+      userName: query.userName,
+      userId: query.userId
     }
+  })
+}
+
+export function getArticlesByTitlecontains(subTitle) {
+  return request({
+    url: `/search/byTitle/${subTitle}`,
+    method: 'get'
   })
 }
 
 export function getHotArtices() {
   return request({
     url: '/articles/hot',
+    method: 'get'
+  })
+}
+
+export function follow(userId, followerId) {
+  return request({
+    url: `/follow/${userId}/${followerId}`,
     method: 'get'
   })
 }
@@ -49,6 +66,14 @@ export function getArticlesByCategory(id) {
 export function getArticlesByTag(id) {
   return request({
     url: `/articles/tag/${id}`,
+    method: 'get'
+  })
+}
+
+
+export function getArticlesByUser(id) {
+  return request({
+    url: `/articles/user/${id}`,
     method: 'get'
   })
 }

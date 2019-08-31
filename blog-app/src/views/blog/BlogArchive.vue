@@ -59,7 +59,7 @@
     },
     computed: {
       title (){
-        return this.currentArchive + ' - 文章归档 - For Fun'
+        return this.currentArchive + ' - 文章归档 - MYDG'
       },
       currentArchive (){
         if(this.article.query.year && this.article.query.month){
@@ -116,7 +116,7 @@
     margin-top: 18px;
     padding: 4px;
     font-size: 18px;
-    color: #5FB878;
+    color: #00ccff;
   }
 
   .me-order-list {

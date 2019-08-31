@@ -3,7 +3,7 @@
     <div class="me-footer">
       <p>Designed by
         <strong>
-          <router-link to="/" class="me-login-design-color">ForFun</router-link>
+          <router-link to="/" class="me-login-design-color">MYDG</router-link>
         </strong>
       </p>
     </div>
@@ -44,7 +44,7 @@
   }
 
   .me-login-design-color {
-    color: #5FB878 !important;
+    color: #00ccff !important;
   }
 
 </style>
