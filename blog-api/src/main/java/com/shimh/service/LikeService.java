@@ -19,7 +19,7 @@ public interface LikeService {
 
     List<Like> getMyLikes(Long userId);
 
-    List<Like> getArticleLikes(Long articleId);
+    List<Like> getArticleLikes(Integer articleId);
 
     //Long saveFollow(Like like);
 

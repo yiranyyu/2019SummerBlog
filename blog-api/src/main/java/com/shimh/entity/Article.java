@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 @Entity
 @Table(name = "me_article")
 public class Article extends BaseEntity<Integer> {
@@ -19,6 +18,9 @@ public class Article extends BaseEntity<Integer> {
 
     private static final long serialVersionUID = -4470366380115322213L;
 
+    @Column(name = "like_count")
+    private int likeCount;
+
     @NotBlank
     @Column(name = "title", length = 40)
     private String title;
@@ -27,24 +29,21 @@ public class Article extends BaseEntity<Integer> {
     @Column(name = "summary", length = 100)
     private String summary;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
     private User author;
 
-    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "body_id")
     private ArticleBody body;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "me_article_tag",
-            joinColumns = {@JoinColumn(name = "article_id")},
-            inverseJoinColumns = {@JoinColumn(name = "tag_id")})
+    @JoinTable(name = "me_article_tag", joinColumns = { @JoinColumn(name = "article_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "tag_id") })
     private List<Tag> tags;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "article", orphanRemoval = true)
@@ -152,5 +151,13 @@ public class Article extends BaseEntity<Integer> {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public int getLikeCount() {
+        return this.likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
     }
 }

@@ -32,10 +32,10 @@ public class LikeServiceImpl implements LikeService {
     }
 
     @Override
-    public List<Like> getArticleLikes(Long articleId) {
-        return likeRepository.findAllByArticleId(articleId);
+    public List<Like> getArticleLikes(Integer articleId) {
+        Long articleIdLong = Long.valueOf(articleId);
+        return likeRepository.findAllByArticleId(articleIdLong);
     }
-
 
     @Override
     @Transactional
@@ -58,20 +58,13 @@ public class LikeServiceImpl implements LikeService {
     }
 
     /**
-    @Override
-    @Transactional
-    public Long saveFollow(Follow follow) {
-        return followRepository.save(follow).getId();
-    }
-
-    @Override
-    public void deleteFollowById(Long id) {
-        followRepository.delete(id);
-    }
-
-    @Override
-    public Follow getFollowById(Long id) {
-        return followRepository.getOne(id);
-    }
-    */
+     * @Override
+     * @Transactional public Long saveFollow(Follow follow) { return
+     *                followRepository.save(follow).getId(); }
+     *                 public void deleteFollowById
+     *                L       followRepository.delete(id); }
+     *
+     * @Override public Follow getFollowById(Long id) { return
+     *           followRepository.getOne(id); }
+     */
 }

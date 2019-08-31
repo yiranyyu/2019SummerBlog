@@ -26,6 +26,7 @@ CREATE TABLE `me_article` (
   `summary` varchar(100) DEFAULT NULL,
   `title` varchar(64) DEFAULT NULL,
   `view_counts` int(11) DEFAULT NULL,
+  `like_count` int(11) DEFAULT NULL,
   `weight` int(11) NOT NULL,
   `author_id` bigint(20) DEFAULT NULL,
   `body_id` bigint(20) DEFAULT NULL,

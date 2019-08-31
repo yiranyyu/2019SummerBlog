@@ -33,11 +33,9 @@ public class ArticleController {
     private UserService userService;
 
     @GetMapping
-    @FastJsonView(
-            exclude = {
-                    @FastJsonFilter(clazz = Article.class, props = {"body", "category", "comments"}),
-                    @FastJsonFilter(clazz = Tag.class, props = {"id", "avatar"})},
-            include = {@FastJsonFilter(clazz = User.class, props = {"nickname"})})
+    @FastJsonView(exclude = { @FastJsonFilter(clazz = Article.class, props = { "body", "category", "comments" }),
+            @FastJsonFilter(clazz = Tag.class, props = { "avatar" }) }, include = {
+                    @FastJsonFilter(clazz = User.class, props = { "nickname" }) })
     @LogAnnotation(module = "文章", operation = "获取所有文章")
     public Result listArticles(ArticleVo article, PageVo page) {
         System.out.println(article.getUserName());
@@ -50,7 +48,7 @@ public class ArticleController {
     }
 
     @GetMapping("/hot")
-    @FastJsonView(include = {@FastJsonFilter(clazz = Article.class, props = {"id", "title"})})
+    @FastJsonView(include = { @FastJsonFilter(clazz = Article.class, props = { "id", "title" }) })
     @LogAnnotation(module = "文章", operation = "获取最热文章")
     public Result listHotArticles() {
         int limit = 6;
@@ -60,7 +58,7 @@ public class ArticleController {
     }
 
     @GetMapping("/new")
-    @FastJsonView(include = {@FastJsonFilter(clazz = Article.class, props = {"id", "title"})})
+    @FastJsonView(include = { @FastJsonFilter(clazz = Article.class, props = { "id", "title" }) })
     @LogAnnotation(module = "文章", operation = "获取最新文章")
     public Result listNewArticles() {
         int limit = 6;
@@ -69,12 +67,9 @@ public class ArticleController {
         return Result.success(articles);
     }
 
-
     @GetMapping("/{id}")
-    @FastJsonView(
-            exclude = {
-                    @FastJsonFilter(clazz = Article.class, props = {"comments"}),
-                    @FastJsonFilter(clazz = ArticleBody.class, props = {"contentHtml"})})
+    @FastJsonView(exclude = { @FastJsonFilter(clazz = Article.class, props = { "comments" }),
+            @FastJsonFilter(clazz = ArticleBody.class, props = { "contentHtml" }) })
     @LogAnnotation(module = "文章", operation = "根据id获取文章")
     public Result getArticleById(@PathVariable("id") Integer id) {
 
@@ -93,12 +88,10 @@ public class ArticleController {
     }
 
     @GetMapping("/view/{id}")
-    @FastJsonView(
-            exclude = {
-                    @FastJsonFilter(clazz = Article.class, props = {"comments"}),
-                    @FastJsonFilter(clazz = ArticleBody.class, props = {"contentHtml"}),
-                    @FastJsonFilter(clazz = Tag.class, props = {"avatar"})},
-            include = {@FastJsonFilter(clazz = User.class, props = {"id", "nickname", "avatar"})})
+    @FastJsonView(exclude = { @FastJsonFilter(clazz = Article.class, props = { "comments" }),
+            @FastJsonFilter(clazz = ArticleBody.class, props = { "contentHtml" }),
+            @FastJsonFilter(clazz = Tag.class, props = { "avatar" }) }, include = {
+                    @FastJsonFilter(clazz = User.class, props = { "id", "nickname", "avatar" }) })
     @LogAnnotation(module = "文章", operation = "根据id获取文章，添加阅读数")
     public Result getArticleAndAddViews(@PathVariable("id") Integer id) {
 
@@ -117,11 +110,9 @@ public class ArticleController {
     }
 
     @GetMapping("/tag/{id}")
-    @FastJsonView(
-            exclude = {
-                    @FastJsonFilter(clazz = Article.class, props = {"body", "category", "comments"}),
-                    @FastJsonFilter(clazz = Tag.class, props = {"id", "avatar"})},
-            include = {@FastJsonFilter(clazz = User.class, props = {"nickname"})})
+    @FastJsonView(exclude = { @FastJsonFilter(clazz = Article.class, props = { "body", "category", "comments" }),
+            @FastJsonFilter(clazz = Tag.class, props = { "id", "avatar" }) }, include = {
+                    @FastJsonFilter(clazz = User.class, props = { "nickname" }) })
     @LogAnnotation(module = "文章", operation = "根据标签获取文章")
     public Result listArticlesByTag(@PathVariable Integer id) {
         List<Article> articles = articleService.listArticlesByTag(id);
@@ -129,13 +120,10 @@ public class ArticleController {
         return Result.success(articles);
     }
 
-
     @GetMapping("/category/{id}")
-    @FastJsonView(
-            exclude = {
-                    @FastJsonFilter(clazz = Article.class, props = {"body", "category", "comments"}),
-                    @FastJsonFilter(clazz = Tag.class, props = {"id", "avatar"})},
-            include = {@FastJsonFilter(clazz = User.class, props = {"nickname"})})
+    @FastJsonView(exclude = { @FastJsonFilter(clazz = Article.class, props = { "body", "category", "comments" }),
+            @FastJsonFilter(clazz = Tag.class, props = { "id", "avatar" }) }, include = {
+                    @FastJsonFilter(clazz = User.class, props = { "nickname" }) })
     @LogAnnotation(module = "文章", operation = "根据分类获取文章")
     public Result listArticlesByCategory(@PathVariable Integer id) {
         List<Article> articles = articleService.listArticlesByCategory(id);
@@ -144,11 +132,9 @@ public class ArticleController {
     }
 
     @GetMapping("/user/{id}")
-    @FastJsonView(
-            exclude = {
-                    @FastJsonFilter(clazz = Article.class, props = {"body", "category", "comments"}),
-                    @FastJsonFilter(clazz = Tag.class, props = {"id", "avatar"})},
-            include = {@FastJsonFilter(clazz = User.class, props = {"nickname"})})
+    @FastJsonView(exclude = { @FastJsonFilter(clazz = Article.class, props = { "body", "category", "comments" }),
+            @FastJsonFilter(clazz = Tag.class, props = { "id", "avatar" }) }, include = {
+                    @FastJsonFilter(clazz = User.class, props = { "nickname" }) })
     @LogAnnotation(module = "文章", operation = "根据用户获取文章")
     public Result listArticlesByUser(@PathVariable Long id) {
         List<Article> articles = articleService.listArticlesByUser(id);
@@ -178,7 +164,6 @@ public class ArticleController {
             r.setResultCode(ResultCode.USER_NOT_EXIST);
             return r;
         }
-
 
         Integer articleId = articleService.updateArticle(article);
 

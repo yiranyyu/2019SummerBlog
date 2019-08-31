@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping(value = "/comments")
 public class CommentController {
-
 
     @Autowired
     private CommentService commentService;
@@ -51,10 +49,8 @@ public class CommentController {
     }
 
     @GetMapping("/article/{id}")
-    @FastJsonView(
-            exclude = {
-                    @FastJsonFilter(clazz = Comment.class, props = {"article", "parent"})},
-            include = {@FastJsonFilter(clazz = User.class, props = {"id", "nickname", "avatar"})})
+    @FastJsonView(exclude = { @FastJsonFilter(clazz = Comment.class, props = { "article", "parent" }) }, include = {
+            @FastJsonFilter(clazz = User.class, props = { "id", "nickname", "avatar" }) })
     @LogAnnotation(module = "评论", operation = "根据文章获取评论")
     public Result listCommentsByArticle(@PathVariable("id") Integer id) {
 
@@ -69,9 +65,9 @@ public class CommentController {
 
         r.setResultCode(ResultCode.SUCCESS);
         r.setData(comments);
+        System.out.println("########################## Data prepared with comments of " + id);
         return r;
     }
-
 
     @PostMapping("/create")
     @RequiresAuthentication
@@ -84,7 +80,6 @@ public class CommentController {
         r.simple().put("commentId", commentId);
         return r;
     }
-
 
     @GetMapping("/delete/{id}")
     @RequiresAuthentication
@@ -104,10 +99,8 @@ public class CommentController {
     }
 
     @PostMapping("/create/change")
-    @FastJsonView(
-            exclude = {
-                    @FastJsonFilter(clazz = Comment.class, props = {"article"})},
-            include = {@FastJsonFilter(clazz = User.class, props = {"id", "nickname", "avatar"})})
+    @FastJsonView(exclude = { @FastJsonFilter(clazz = Comment.class, props = { "article" }) }, include = {
+            @FastJsonFilter(clazz = User.class, props = { "id", "nickname", "avatar" }) })
     @RequiresAuthentication
     @LogAnnotation(module = "评论", operation = "添加评论，增加评论数")
     public Result saveCommentAndChangeCounts(@RequestBody Comment comment) {
@@ -117,7 +110,6 @@ public class CommentController {
         Result r = Result.success(savedComment);
         return r;
     }
-
 
     @GetMapping("/delete/change/{id}")
     @RequiresAuthentication

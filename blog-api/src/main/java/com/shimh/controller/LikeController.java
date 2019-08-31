@@ -46,4 +46,12 @@ public class LikeController {
             return Result.error(ResultCode.DATA_ALREADY_EXISTED, "Already liked or other inner error");
         }
     }
+
+    @GetMapping("/isLiking/{userId}/{articleId}")
+    // @RequiresAuthentication
+    @LogAnnotation(module = "点赞", operation = "点赞文章")
+    public Result isLiking(@PathVariable("userId") Long userId, @PathVariable("articleId") Long articleId) {
+        boolean state = likeService.hasLiked(userId, articleId);
+        return Result.success(state);
+    }
 }

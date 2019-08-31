@@ -132,7 +132,6 @@ public class UserController {
     @LogAnnotation(module = "用户", operation = "修改用户")
     public Result updateUser(@RequestBody User user) {
         Result r = new Result();
-        System.out.println(user.getAvatar().substring(0, 50));
         User origin = userService.getUserByAccount(user.getAccount());
         if (null == origin) {
             r.setResultCode(ResultCode.USER_NOT_EXIST);
