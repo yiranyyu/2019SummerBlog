@@ -1,7 +1,15 @@
-# MYDG - BLOG
----
+## MYDG - BLOG
 
 A blog based on Spring-boot (backend) and Vue.js (frontend)
 
-For support and more info: https://t.me/x69x929x69xd
 
+## Announcement
+
+Thanks [shimh](https://github.com/shimh-develop), our blog is designed based on his previous [blog project](https://github.com/shimh-develop/blog-vue-springboot).
+
+## Group member
+
+* Team leader: [bryantma](https://github.com/bryantma)
+* [yiranyyu](https://github.com/yiranyyu)
+* [khunkin](https://github.com/khunkin)
+* [wojiaobuzhidao1](https://github.com/wojiaobuzhidao1)
