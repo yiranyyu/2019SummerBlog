@@ -7,6 +7,8 @@ import com.mydg.common.result.Result;
 import com.mydg.entity.User;
 import com.mydg.oauth.OAuthSessionManager;
 import com.mydg.service.UserService;
+import com.mydg.util.sendMessage;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -15,9 +17,13 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 @RestController
 public class LoginController {
@@ -31,6 +37,14 @@ public class LoginController {
         Result r = new Result();
         executeLogin(user.getAccount(), user.getPassword(), r);
         return r;
+    }
+
+    @GetMapping("/capcha/{phone}")
+    public Result capcha(@PathVariable("phone") String phone) {
+        System.out.println("******************** Get capcha " + phone);
+        String result = sendMessage.sendMessage(phone, "");
+        JSONObject r = JSON.parseObject(result);
+        return Result.success(r);
     }
 
     @PostMapping("/register")
@@ -92,7 +106,6 @@ public class LoginController {
         System.out.println("超时登录。。。:" + id);
         return Result.error(ResultCode.SESSION_TIME_OUT);
     }
-
 
     @GetMapping("/logout")
     @LogAnnotation(module = "退出", operation = "退出")
